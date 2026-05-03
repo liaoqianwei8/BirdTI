@@ -300,96 +300,96 @@
     </div>
 
     <script>
-        // 问题数据
+        // 问题数据（小鸟视角）
         const questions = [
             {
-                question: "周末你更喜欢做什么？",
+                question: "清晨醒来，我更喜欢？",
                 options: [
-                    { text: "约朋友出去聚会聊天", type: "E" },
-                    { text: "在家看书或看电影", type: "I" },
-                    { text: "计划一次短途旅行", type: "E" },
-                    { text: "整理房间或做手账", type: "I" }
+                    { text: "飞到枝头大声歌唱，唤醒森林", type: "E" },
+                    { text: "静静地梳理羽毛，享受宁静", type: "I" },
+                    { text: "邀小伙伴一起去探索新地方", type: "E" },
+                    { text: "独自在树上观察周围的一切", type: "I" }
                 ]
             },
             {
-                question: "做重要决定时，你更倾向于？",
+                question: "发现美味的果实，我会？",
                 options: [
-                    { text: "凭直觉和感觉", type: "N" },
-                    { text: "分析事实和数据", type: "S" },
-                    { text: "询问他人意见", type: "F" },
-                    { text: "独立思考判断", type: "T" }
+                    { text: "凭直觉飞到最近的果树", type: "N" },
+                    { text: "先观察果实是否成熟安全", type: "S" },
+                    { text: "呼唤同伴一起来分享", type: "F" },
+                    { text: "先确认没有天敌再行动", type: "T" }
                 ]
             },
             {
-                question: "学习新知识时，你更喜欢？",
+                question: "学习飞翔技巧时，我会？",
                 options: [
-                    { text: "了解整体框架和概念", type: "N" },
-                    { text: "掌握具体细节和实例", type: "S" },
-                    { text: "动手实践操作", type: "S" },
-                    { text: "深入思考理论", type: "N" }
+                    { text: "先想象各种飞行姿势", type: "N" },
+                    { text: "跟着妈妈一步步练习", type: "S" },
+                    { text: "在风中自由尝试各种动作", type: "S" },
+                    { text: "思考气流和翅膀的关系", type: "N" }
                 ]
             },
             {
-                question: "团队合作中，你通常是？",
+                question: "鸟群迁徙时，我通常是？",
                 options: [
-                    { text: "活跃提出想法的人", type: "E" },
-                    { text: "默默支持的人", type: "I" },
-                    { text: "协调各方的人", type: "F" },
-                    { text: "理性分析的人", type: "T" }
+                    { text: "飞在前面引领方向", type: "E" },
+                    { text: "跟在队伍中间默默飞行", type: "I" },
+                    { text: "照顾年幼体弱的小鸟", type: "F" },
+                    { text: "观察天气和地形变化", type: "T" }
                 ]
             },
             {
-                question: "面对压力时，你会？",
+                question: "遇到暴风雨时，我会？",
                 options: [
-                    { text: "找人倾诉", type: "F" },
-                    { text: "独自冷静思考", type: "T" },
-                    { text: "运动或听音乐放松", type: "P" },
-                    { text: "制定计划解决问题", type: "J" }
+                    { text: "飞到同伴身边互相安慰", type: "F" },
+                    { text: "寻找最安全的避雨处", type: "T" },
+                    { text: "在雨中欢快地洗澡", type: "P" },
+                    { text: "提前找好避雨计划", type: "J" }
                 ]
             },
             {
-                question: "你更喜欢什么样的工作环境？",
+                question: "搭建鸟巢时，我喜欢？",
                 options: [
-                    { text: "灵活自由", type: "P" },
-                    { text: "结构清晰", type: "J" },
-                    { text: "创意氛围", type: "N" },
-                    { text: "务实高效", type: "S" }
+                    { text: "随心所欲地收集材料", type: "P" },
+                    { text: "按步骤精心建造", type: "J" },
+                    { text: "用漂亮的羽毛装饰", type: "N" },
+                    { text: "选择最结实的树枝", type: "S" }
                 ]
             },
             {
-                question: "朋友遇到困难，你会？",
+                question: "同伴受伤了，我会？",
                 options: [
-                    { text: "给予情感支持", type: "F" },
-                    { text: "提供解决方案", type: "T" },
-                    { text: "陪在身边倾听", type: "F" },
-                    { text: "帮他分析问题", type: "T" }
+                    { text: "守在身边温暖它", type: "F" },
+                    { text: "去找草药帮它疗伤", type: "T" },
+                    { text: "为它唱歌加油", type: "F" },
+                    { text: "分析如何帮它恢复", type: "T" }
                 ]
             },
             {
-                question: "你更看重？",
+                question: "选择栖息地时，我更看重？",
                 options: [
-                    { text: "创新和可能性", type: "N" },
-                    { text: "传统和稳定性", type: "S" },
-                    { text: "和谐与包容", type: "F" },
-                    { text: "公正与原则", type: "T" }
+                    { text: "风景优美视野开阔", type: "N" },
+                    { text: "食物充足安全稳定", type: "S" },
+                    { text: "邻居友善和睦相处", type: "F" },
+                    { text: "规则明确秩序井然", type: "T" }
                 ]
             },
             {
-                question: "旅行时，你会？",
+                question: "春天来了，我会？",
                 options: [
-                    { text: "详细规划行程", type: "J" },
-                    { text: "随遇而安", type: "P" },
-                    { text: "提前订好所有酒店", type: "J" },
-                    { text: "走到哪算哪", type: "P" }
+                    { text: "制定详细的筑巢计划", type: "J" },
+                    { text: "随遇而安顺其自然", type: "P" },
+                    { text: "提前准备好所有材料", type: "J" },
+                    { text: "边找材料边搭建", type: "P" }
                 ]
             },
             {
-                question: "收到任务后，你会？",
+                question: "接到送信任务时，我会？",
                 options: [
-                    { text: "尽快完成", type: "J" },
-                    { text: "等到截止日期前", type: "P" },
-                    { text: "先规划再执行", type: "J" },
-                    { text: "边做边调整", type: "P" }
+                    { text: "立刻出发送达", type: "J" },
+                    { text: "先玩一会儿再去", type: "P" },
+                    { text: "规划最佳路线", type: "J" },
+                    { text: "边飞边欣赏风景", type: "P" }
                 ]
             }
         ];
@@ -398,7 +398,7 @@
         const birdTypes = {
             ESTJ: {
                 name: "啄木鸟",
-                icon: "<svg viewBox='0 0 100 100'><rect x='12' y='44' width='76' height='44' fill='#8B4513'/><rect x='25' y='25' width='50' height='25' fill='#A0522D'/><rect x='31' y='6' width='38' height='19' fill='#FF6347'/><rect x='44' y='31' width='12' height='19' fill='#FFD700'/><rect x='31' y='31' width='12' height='12' fill='white'/><rect x='36' y='36' width='6' height='6' fill='black'/><rect x='57' y='31' width='12' height='12' fill='white'/><rect x='62' y='36' width='6' height='6' fill='black'/></svg>",
+                icon: "<svg viewBox='0 0 100 100'><ellipse cx='50' cy='65' rx='35' ry='25' fill='#5D4037'/><ellipse cx='50' cy='45' rx='22' ry='18' fill='#8D6E63'/><ellipse cx='50' cy='28' rx='15' ry='12' fill='#E53935'/><path d='M42 40 L46 62 L54 62 L58 40 Z' fill='#FFD54F'/><circle cx='40' cy='42' r='6' fill='white'/><circle cx='41' cy='42' r='3' fill='black'/><circle cx='60' cy='42' r='6' fill='white'/><circle cx='61' cy='42' r='3' fill='black'/><path d='M25 60 Q15 55 20 45' stroke='black' stroke-width='2' fill='none'/><path d='M75 60 Q85 55 80 45' stroke='black' stroke-width='2' fill='none'/><rect x='70' y='55' width='8' height='25' fill='#8D6E63'/><rect x='68' y='53' width='12' height='5' fill='#A1887F'/></svg>",
                 title: "勤劳的实干家",
                 keyword: "负责 | 务实 | 秩序",
                 description: "你就像一只勤劳的啄木鸟，踏实肯干，善于解决问题。你注重秩序和效率，是团队中可靠的执行者。你的责任感和执行力让人信赖。",
@@ -411,7 +411,7 @@
             },
             ESFJ: {
                 name: "麻雀",
-                icon: "<svg viewBox='0 0 100 100'><rect x='20' y='50' width='60' height='35' fill='#8B4513'/><rect x='25' y='30' width='50' height='25' fill='#A0522D'/><rect x='35' y='18' width='30' height='15' fill='#D2691E'/><rect x='30' y='35' width='12' height='12' fill='white'/><rect x='34' y='39' width='4' height='4' fill='black'/><rect x='58' y='35' width='12' height='12' fill='white'/><rect x='62' y='39' width='4' height='4' fill='black'/></svg>",
+                icon: "<svg viewBox='0 0 100 100'><ellipse cx='50' cy='68' rx='28' ry='20' fill='#8D6E63'/><ellipse cx='50' cy='48' rx='18' ry='15' fill='#A1887F'/><ellipse cx='42' cy='35' rx='12' ry='10' fill='#5D4037'/><ellipse cx='58' cy='35' rx='12' ry='10' fill='#5D4037'/><path d='M47 42 L48 60 L52 60 L53 42 Z' fill='#FFD54F'/><circle cx='42' cy='45' r='5' fill='white'/><circle cx='43' cy='45' r='2.5' fill='black'/><circle cx='58' cy='45' r='5' fill='white'/><circle cx='59' cy='45' r='2.5' fill='black'/><ellipse cx='50' cy='52' rx='8' ry='6' fill='#EFEBE9'/><path d='M28 65 Q18 60 22 50' stroke='black' stroke-width='1.5' fill='none'/><path d='M72 65 Q82 60 78 50' stroke='black' stroke-width='1.5' fill='none'/></svg>",
                 title: "温暖的守护者",
                 keyword: "热心 | 体贴 | 和谐",
                 description: "你就像一只活泼的麻雀，热情友善，善于照顾他人。你重视人际关系，乐于帮助朋友，是团队中的暖心者。你的亲和力让身边的人感到温暖和舒适。",
@@ -424,7 +424,7 @@
             },
             ISTJ: {
                 name: "珠颈斑鸠",
-                icon: "<svg viewBox='0 0 100 100'><rect x='15' y='45' width='70' height='40' fill='#87CEEB'/><rect x='25' y='28' width='50' height='22' fill='#B0E0E6'/><rect x='40' y='15' width='20' height='18' fill='#5F9EA0'/><rect x='30' y='32' width='12' height='12' fill='white'/><rect x='34' y='36' width='4' height='4' fill='black'/><rect x='58' y='32' width='12' height='12' fill='white'/><rect x='62' y='36' width='4' height='4' fill='black'/></svg>",
+                icon: "<svg viewBox='0 0 100 100'><ellipse cx='50' cy='62' rx='38' ry='22' fill='#A1887F'/><ellipse cx='50' cy='42' rx='20' ry='16' fill='#BCAAA4'/><path d='M35 35 Q30 25 45 22 Q55 22 70 25 Q65 35 50 32 Z' fill='#8D6E63'/><path d='M45 30 L47 33 L44 35 L47 37 L45 40 L42 37 L45 35 L42 33 Z' fill='white'/><path d='M52 30 L54 33 L51 35 L54 37 L52 40 L49 37 L52 35 L49 33 Z' fill='white'/><path d='M48 25 L50 28 L47 30 L50 32 L48 35 L45 32 L48 30 L45 28 Z' fill='white'/><circle cx='40' cy='40' r='5' fill='white'/><circle cx='41' cy='40' r='2.5' fill='black'/><circle cx='60' cy='40' r='5' fill='white'/><circle cx='61' cy='40' r='2.5' fill='black'/><path d='M25 60 Q15 55 18 48' stroke='black' stroke-width='1.5' fill='none'/><path d='M75 60 Q85 55 82 48' stroke='black' stroke-width='1.5' fill='none'/></svg>",
                 title: "沉稳的观察者",
                 keyword: "稳重 | 细致 | 可靠",
                 description: "你就像一只优雅的珠颈斑鸠，沉稳内敛，注重细节。你做事踏实认真，是值得信赖的朋友。虽然不善于表达，但内心丰富，总是默默关注着身边的人和事。",
@@ -437,7 +437,7 @@
             },
             ISFJ: {
                 name: "鸽子",
-                icon: "<svg viewBox='0 0 100 100'><rect x='15' y='45' width='70' height='40' fill='white'/><rect x='25' y='28' width='50' height='22' fill='white'/><rect x='40' y='15' width='20' height='18' fill='#FFD700'/><rect x='30' y='32' width='12' height='12' fill='#DDD'/><rect x='34' y='36' width='4' height='4' fill='black'/><rect x='58' y='32' width='12' height='12' fill='#DDD'/><rect x='62' y='36' width='4' height='4' fill='black'/></svg>",
+                icon: "<svg viewBox='0 0 100 100'><ellipse cx='50' cy='65' rx='32' ry='20' fill='white'/><ellipse cx='50' cy='45' rx='18' ry='15' fill='#F5F5F5'/><path d='M42 38 L44 55 L56 55 L58 38 Z' fill='#FFD54F'/><circle cx='41' cy='43' r='5' fill='#E0E0E0'/><circle cx='42' cy='43' r='2.5' fill='black'/><circle cx='59' cy='43' r='5' fill='#E0E0E0'/><circle cx='60' cy='43' r='2.5' fill='black'/><path d='M22 62 Q8 55 12 42' stroke='#E0E0E0' stroke-width='2' fill='none'/><path d='M78 62 Q92 55 88 42' stroke='#E0E0E0' stroke-width='2' fill='none'/></svg>",
                 title: "和平的使者",
                 keyword: "善良 | 温柔 | 奉献",
                 description: "你就像一只温柔的鸽子，善良体贴，乐于助人。你总是默默奉献，不求回报，是和平与友爱的象征。你的温柔和善良让周围的人感到安心。",
@@ -450,7 +450,7 @@
             },
             ENTJ: {
                 name: "老鹰",
-                icon: "<svg viewBox='0 0 100 100'><polygon points='50,5 20,35 50,25 80,35' fill='#D2691E'/><rect x='15' y='35' width='70' height='50' fill='#CD853F'/><rect x='30' y='28' width='12' height='12' fill='white'/><rect x='34' y='32' width='4' height='4' fill='black'/><rect x='58' y='28' width='12' height='12' fill='white'/><rect x='62' y='32' width='4' height='4' fill='black'/></svg>",
+                icon: "<svg viewBox='0 0 100 100'><ellipse cx='50' cy='60' rx='35' ry='25' fill='#5D4037'/><ellipse cx='50' cy='40' rx='22' ry='18' fill='#8D6E63'/><path d='M35 25 L38 42 L42 25 Z' fill='#8D6E63'/><path d='M62 25 L65 42 L68 25 Z' fill='#8D6E63'/><path d='M42 35 L44 55 L56 55 L58 35 Z' fill='#FFD54F'/><circle cx='38' cy='38' r='6' fill='white'/><circle cx='40' cy='38' r='3' fill='black'/><circle cx='62' cy='38' r='6' fill='white'/><circle cx='64' cy='38' r='3' fill='black'/><path d='M25 55 Q12 48 18 38' stroke='black' stroke-width='2' fill='none'/><path d='M75 55 Q88 48 82 38' stroke='black' stroke-width='2' fill='none'/></svg>",
                 title: "霸气的领导者",
                 keyword: "果断 | 自信 | 远见",
                 description: "你就像一只威严的老鹰，目光锐利，决策果断。你具有卓越的领导才能和战略眼光，能够带领团队走向成功。你的自信和魄力让人信服。",
@@ -463,7 +463,7 @@
             },
             ENFJ: {
                 name: "黄鹂",
-                icon: "<svg viewBox='0 0 100 100'><rect x='15' y='45' width='70' height='40' fill='#FFD700'/><rect x='25' y='28' width='50' height='22' fill='#FFEC8B'/><rect x='40' y='15' width='20' height='18' fill='#FF8C00'/><rect x='30' y='32' width='12' height='12' fill='white'/><rect x='34' y='36' width='4' height='4' fill='black'/><rect x='58' y='32' width='12' height='12' fill='white'/><rect x='62' y='36' width='4' height='4' fill='black'/><rect x='18' y='52' width='12' height='12' fill='#FF6347'/><rect x='70' y='52' width='12' height='12' fill='#FF6347'/></svg>",
+                icon: "<svg viewBox='0 0 100 100'><ellipse cx='50' cy='65' rx='32' ry='20' fill='#FFD54F'/><ellipse cx='50' cy='45' rx='18' ry='15' fill='#FFEB3B'/><path d='M43 38 L45 55 L55 55 L57 38 Z' fill='#E53935'/><circle cx='41' cy='43' r='5' fill='white'/><circle cx='42' cy='43' r='2.5' fill='black'/><circle cx='59' cy='43' r='5' fill='white'/><circle cx='60' cy='43' r='2.5' fill='black'/><path d='M25 62 Q12 55 18 45' stroke='#FFC107' stroke-width='2' fill='none'/><path d='M75 62 Q88 55 82 45' stroke='#FFC107' stroke-width='2' fill='none'/></svg>",
                 title: "热情的引路人",
                 keyword: "热情 | 鼓舞 | 理想",
                 description: "你就像一只美丽的黄鹂，声音悦耳，充满热情。你善于激励他人，是团队中的灵魂人物。你的理想主义和感染力能够激发大家的潜能。",
@@ -476,7 +476,7 @@
             },
             INTJ: {
                 name: "猫头鹰",
-                icon: "<svg viewBox='0 0 100 100'><rect x='15' y='45' width='70' height='40' fill='#808080'/><rect x='25' y='28' width='50' height='22' fill='#A0A0A0'/><rect x='15' y='30' width='15' height='18' fill='#606060'/><rect x='70' y='30' width='15' height='18' fill='#606060'/><rect x='30' y='32' width='15' height='15' fill='white'/><rect x='35' y='37' width='5' height='5' fill='black'/><rect x='55' y='32' width='15' height='15' fill='white'/><rect x='60' y='37' width='5' height='5' fill='black'/></svg>",
+                icon: "<svg viewBox='0 0 100 100'><ellipse cx='50' cy='65' rx='35' ry='22' fill='#5D4037'/><ellipse cx='50' cy='45' rx='25' ry='20' fill='#8D6E63'/><ellipse cx='30' cy='42' rx='12' ry='14' fill='#8D6E63'/><ellipse cx='70' cy='42' rx='12' ry='14' fill='#8D6E63'/><circle cx='40' cy='45' r='10' fill='white'/><circle cx='42' cy='45' r='6' fill='#81D4FA'/><circle cx='44' cy='45' r='3' fill='black'/><circle cx='60' cy='45' r='10' fill='white'/><circle cx='62' cy='45' r='6' fill='#81D4FA'/><circle cx='64' cy='45' r='3' fill='black'/><path d='M45 52 L47 60 L53 60 L55 52 Z' fill='#FFD54F'/></svg>",
                 title: "睿智的思考者",
                 keyword: "智慧 | 独立 | 深刻",
                 description: "你就像一只睿智的猫头鹰，善于思考，见解深刻。你喜欢独立思考，追求知识和真理。虽然外表高冷，但内心丰富，是思想的先驱者。",
@@ -489,7 +489,7 @@
             },
             INFJ: {
                 name: "孔雀",
-                icon: "<svg viewBox='0 0 100 100'><rect x='10' y='45' width='55' height='40' fill='#00CED1'/><rect x='20' y='28' width='40' height='22' fill='#20B2AA'/><rect x='35' y='15' width='15' height='18' fill='#FFD700'/><rect x='25' y='32' width='12' height='12' fill='white'/><rect x='29' y='36' width='4' height='4' fill='black'/><rect x='53' y='32' width='12' height='12' fill='white'/><rect x='57' y='36' width='4' height='4' fill='black'/><rect x='65' y='45' width='25' height='35' fill='#9370DB'/></svg>",
+                icon: "<svg viewBox='0 0 100 100'><ellipse cx='50' cy='65' rx='30' ry='20' fill='#00BCD4'/><ellipse cx='50' cy='45' rx='18' ry='15' fill='#26C6DA'/><path d='M35 55 Q15 45 10 35 Q15 50 35 58' fill='#9C27B0'/><path d='M40 58 Q25 48 18 38 Q25 52 40 60' fill='#E91E63'/><path d='M65 55 Q85 45 90 35 Q85 50 65 58' fill='#9C27B0'/><path d='M60 58 Q75 48 82 38 Q75 52 60 60' fill='#E91E63'/><path d='M44 38 L46 55 L54 55 L56 38 Z' fill='#FFD54F'/><circle cx='41' cy='43' r='5' fill='white'/><circle cx='42' cy='43' r='2.5' fill='black'/><circle cx='59' cy='43' r='5' fill='white'/><circle cx='60' cy='43' r='2.5' fill='black'/></svg>",
                 title: "优雅的梦想家",
                 keyword: "理想 | 创意 | 独特",
                 description: "你就像一只优雅的孔雀，内心丰富，充满创意。你善于发现美，追求独特的生活方式。你的理想主义和艺术气质让你与众不同。",
@@ -502,7 +502,7 @@
             },
             ESTP: {
                 name: "喜鹊",
-                icon: "<svg viewBox='0 0 100 100'><rect x='15' y='45' width='70' height='40' fill='black'/><rect x='25' y='28' width='50' height='22' fill='black'/><rect x='40' y='15' width='20' height='18' fill='white'/><rect x='30' y='32' width='12' height='12' fill='white'/><rect x='34' y='36' width='4' height='4' fill='black'/><rect x='58' y='32' width='12' height='12' fill='white'/><rect x='62' y='36' width='4' height='4' fill='black'/></svg>",
+                icon: "<svg viewBox='0 0 100 100'><ellipse cx='50' cy='65' rx='32' ry='20' fill='black'/><ellipse cx='50' cy='45' rx='18' ry='15' fill='black'/><ellipse cx='40' cy='35' rx='10' ry='8' fill='white'/><ellipse cx='60' cy='35' rx='10' ry='8' fill='white'/><path d='M44 38 L46 55 L54 55 L56 38 Z' fill='#FFD54F'/><circle cx='41' cy='43' r='5' fill='white'/><circle cx='42' cy='43' r='2.5' fill='black'/><circle cx='59' cy='43' r='5' fill='white'/><circle cx='60' cy='43' r='2.5' fill='black'/></svg>",
                 title: "活泼的社交达人",
                 keyword: "活力 | 灵活 | 务实",
                 description: "你就像一只活泼的喜鹊，充满活力，善于社交。你喜欢尝试新事物，勇于冒险，是朋友圈中的开心果。你反应敏捷，能够快速适应各种环境。",
@@ -515,7 +515,7 @@
             },
             ESFP: {
                 name: "太阳鸟",
-                icon: "<svg viewBox='0 0 100 100'><rect x='15' y='45' width='70' height='40' fill='#FF6347'/><rect x='25' y='28' width='50' height='22' fill='#FF7F50'/><rect x='40' y='15' width='20' height='18' fill='#FFD700'/><rect x='30' y='32' width='12' height='12' fill='white'/><rect x='34' y='36' width='4' height='4' fill='black'/><rect x='58' y='32' width='12' height='12' fill='white'/><rect x='62' y='36' width='4' height='4' fill='black'/></svg>",
+                icon: "<svg viewBox='0 0 100 100'><ellipse cx='50' cy='65' rx='28' ry='18' fill='#FF5722'/><ellipse cx='50' cy='45' rx='16' ry='14' fill='#FF7043'/><ellipse cx='50' cy='32' rx='12' ry='10' fill='#FFD54F'/><path d='M45 38 L47 55 L53 55 L55 38 Z' fill='#E91E63'/><circle cx='42' cy='43' r='5' fill='white'/><circle cx='43' cy='43' r='2.5' fill='black'/><circle cx='58' cy='43' r='5' fill='white'/><circle cx='59' cy='43' r='2.5' fill='black'/></svg>",
                 title: "热情的乐天派",
                 keyword: "热情 | 乐观 | 活泼",
                 description: "你就像一只绚丽的太阳鸟，热情洋溢，充满活力。你热爱生活，善于发现美好，是身边人的快乐源泉。你喜欢与人交往，享受当下的每一刻。",
@@ -528,7 +528,7 @@
             },
             ISTP: {
                 name: "翠鸟",
-                icon: "<svg viewBox='0 0 100 100'><rect x='15' y='45' width='70' height='40' fill='#00CED1'/><rect x='25' y='28' width='50' height='22' fill='#20B2AA'/><rect x='40' y='15' width='20' height='18' fill='#FFD700'/><rect x='30' y='32' width='12' height='12' fill='white'/><rect x='34' y='36' width='4' height='4' fill='black'/><rect x='58' y='32' width='12' height='12' fill='white'/><rect x='62' y='36' width='4' height='4' fill='black'/></svg>",
+                icon: "<svg viewBox='0 0 100 100'><ellipse cx='50' cy='65' rx='28' ry='18' fill='#00BCD4'/><ellipse cx='50' cy='45' rx='16' ry='14' fill='#26C6DA'/><ellipse cx='50' cy='30' rx='14' ry='12' fill='#4DD0E1'/><path d='M44 35 L46 52 L54 52 L56 35 Z' fill='#E91E63'/><circle cx='42' cy='42' r='5' fill='white'/><circle cx='43' cy='42' r='2.5' fill='black'/><circle cx='58' cy='42' r='5' fill='white'/><circle cx='59' cy='42' r='2.5' fill='black'/></svg>",
                 title: "冷静的行动者",
                 keyword: "冷静 | 务实 | 灵巧",
                 description: "你就像一只敏捷的翠鸟，冷静务实，善于动手。你喜欢探索和实践，能够快速解决问题。虽然话不多，但行动力强，是可靠的伙伴。",
@@ -541,7 +541,7 @@
             },
             ISFP: {
                 name: "画眉",
-                icon: "<svg viewBox='0 0 100 100'><rect x='15' y='45' width='70' height='40' fill='#8B4513'/><rect x='25' y='28' width='50' height='22' fill='#A0522D'/><rect x='40' y='15' width='20' height='18' fill='#8B4513'/><rect x='15' y='32' width='15' height='6' fill='white'/><rect x='30' y='32' width='12' height='12' fill='white'/><rect x='34' y='36' width='4' height='4' fill='black'/><rect x='58' y='32' width='12' height='12' fill='white'/><rect x='62' y='36' width='4' height='4' fill='black'/></svg>",
+                icon: "<svg viewBox='0 0 100 100'><ellipse cx='50' cy='65' rx='30' ry='19' fill='#D2691E'/><ellipse cx='50' cy='45' rx='17' ry='14' fill='#DEB887'/><ellipse cx='50' cy='32' rx='13' ry='10' fill='#CD853F'/><path d='M38 40 Q30 32 35 28' stroke='black' stroke-width='1.5' fill='none'/><path d='M62 40 Q70 32 65 28' stroke='black' stroke-width='1.5' fill='none'/><path d='M45 38 L47 55 L53 55 L55 38 Z' fill='#FFD54F'/><circle cx='41' cy='43' r='5' fill='white'/><circle cx='42' cy='43' r='2.5' fill='black'/><circle cx='59' cy='43' r='5' fill='white'/><circle cx='60' cy='43' r='2.5' fill='black'/></svg>",
                 title: "细腻的艺术家",
                 keyword: "温柔 | 敏感 | 艺术",
                 description: "你就像一只婉转的画眉，温柔细腻，富有艺术气息。你善于感受美，热爱生活中的小确幸。虽然低调，但内心丰富，有着独特的审美和创造力。",
@@ -554,7 +554,7 @@
             },
             ENTP: {
                 name: "乌鸦",
-                icon: "<svg viewBox='0 0 100 100'><rect x='15' y='45' width='70' height='40' fill='black'/><rect x='25' y='28' width='50' height='22' fill='black'/><rect x='40' y='15' width='20' height='18' fill='#FFD700'/><rect x='30' y='32' width='12' height='12' fill='#888'/><rect x='34' y='36' width='4' height='4' fill='white'/><rect x='58' y='32' width='12' height='12' fill='#888'/><rect x='62' y='36' width='4' height='4' fill='white'/></svg>",
+                icon: "<svg viewBox='0 0 100 100'><ellipse cx='50' cy='65' rx='35' ry='22' fill='black'/><ellipse cx='50' cy='45' rx='20' ry='16' fill='black'/><ellipse cx='50' cy='28' rx='15' ry='12' fill='#1a1a1a'/><path d='M43 35 L45 52 L55 52 L57 35 Z' fill='#FFD54F'/><circle cx='38' cy='42' r='6' fill='white'/><circle cx='40' cy='42' r='3' fill='black'/><circle cx='62' cy='42' r='6' fill='white'/><circle cx='64' cy='42' r='3' fill='black'/></svg>",
                 title: "机智的创新者",
                 keyword: "好奇 | 机智 | 创新",
                 description: "你就像一只聪明的乌鸦，充满好奇心，善于创新。你喜欢挑战传统，提出独特的想法。你思维敏捷，善于辩论，是团队中的智多星。",
@@ -567,7 +567,7 @@
             },
             ENFP: {
                 name: "鹦鹉",
-                icon: "<svg viewBox='0 0 100 100'><rect x='15' y='45' width='70' height='40' fill='#32CD32'/><rect x='25' y='28' width='50' height='22' fill='#00FF7F'/><rect x='40' y='15' width='20' height='18' fill='#FF6347'/><rect x='15' y='32' width='10' height='15' fill='#228B22'/><rect x='30' y='32' width='12' height='12' fill='white'/><rect x='34' y='36' width='4' height='4' fill='black'/><rect x='58' y='32' width='12' height='12' fill='white'/><rect x='62' y='36' width='4' height='4' fill='black'/></svg>",
+                icon: "<svg viewBox='0 0 100 100'><ellipse cx='50' cy='68' rx='30' ry='22' fill='#4CAF50'/><ellipse cx='50' cy='48' rx='18' ry='16' fill='#66BB6A'/><path d='M35 50 Q25 45 22 35 Q28 42 35 48' fill='#FF5722'/><path d='M65 50 Q75 45 78 35 Q72 42 65 48' fill='#FF5722'/><path d='M43 42 L45 58 L55 58 L57 42 Z' fill='#FFD54F'/><circle cx='41' cy='47' r='5' fill='white'/><circle cx='42' cy='47' r='2.5' fill='black'/><circle cx='59' cy='47' r='5' fill='white'/><circle cx='60' cy='47' r='2.5' fill='black'/></svg>",
                 title: "热情的梦想家",
                 keyword: "热情 | 创意 | 社交",
                 description: "你就像一只色彩斑斓的鹦鹉，充满热情和活力。你善于表达，热爱生活，总是能给身边的人带来欢乐。你有着丰富的想象力和创造力。",
@@ -580,7 +580,7 @@
             },
             INTP: {
                 name: "布谷鸟",
-                icon: "<svg viewBox='0 0 100 100'><rect x='15' y='45' width='70' height='40' fill='#6B8E23'/><rect x='25' y='28' width='50' height='22' fill='#8FBC8F'/><rect x='35' y='15' width='30' height='18' fill='#556B2F'/><rect x='30' y='32' width='12' height='12' fill='white'/><rect x='34' y='36' width='4' height='4' fill='black'/><rect x='58' y='32' width='12' height='12' fill='white'/><rect x='62' y='36' width='4' height='4' fill='black'/></svg>",
+                icon: "<svg viewBox='0 0 100 100'><ellipse cx='50' cy='65' rx='32' ry='20' fill='#FFD54F'/><ellipse cx='50' cy='45' rx='18' ry='15' fill='#FFEB3B'/><ellipse cx='50' cy='28' rx='14' ry='11' fill='#FFC107'/><path d='M44 35 L46 52 L54 52 L56 35 Z' fill='#795548'/><circle cx='41' cy='42' r='5' fill='white'/><circle cx='42' cy='42' r='2.5' fill='black'/><circle cx='59' cy='42' r='5' fill='white'/><circle cx='60' cy='42' r='2.5' fill='black'/></svg>",
                 title: "深邃的思考者",
                 keyword: "理性 | 分析 | 创新",
                 description: "你就像一只神秘的布谷鸟，善于思考，追求真理。你喜欢探索事物的本质，有着敏锐的逻辑思维。你独立思考，不随波逐流，总是能提出深刻的见解。",
@@ -593,7 +593,7 @@
             },
             INFP: {
                 name: "夜莺",
-                icon: "<svg viewBox='0 0 100 100'><rect x='15' y='45' width='70' height='40' fill='#A0522D'/><rect x='25' y='28' width='50' height='22' fill='#CD853F'/><rect x='40' y='15' width='20' height='18' fill='#8B4513'/><rect x='15' y='32' width='15' height='6' fill='#FFB6C1'/><rect x='30' y='32' width='12' height='12' fill='white'/><rect x='34' y='36' width='4' height='4' fill='black'/><rect x='58' y='32' width='12' height='12' fill='white'/><rect x='62' y='36' width='4' height='4' fill='black'/></svg>",
+                icon: "<svg viewBox='0 0 100 100'><ellipse cx='50' cy='65' rx='30' ry='20' fill='#424242'/><ellipse cx='50' cy='45' rx='17' ry='14' fill='#616161'/><ellipse cx='50' cy='30' rx='13' ry='10' fill='#757575'/><path d='M45 38 L47 55 L53 55 L55 38 Z' fill='#9C27B0'/><circle cx='41' cy='43' r='5' fill='white'/><circle cx='42' cy='43' r='2.5' fill='black'/><circle cx='59' cy='43' r='5' fill='white'/><circle cx='60' cy='43' r='2.5' fill='black'/></svg>",
                 title: "诗意的理想主义者",
                 keyword: "理想 | 善良 | 诗意",
                 description: "你就像一只夜莺，充满诗意和理想主义。你内心丰富，善于感受美和表达情感。你追求真善美，希望用自己的方式让世界变得更美好。",
