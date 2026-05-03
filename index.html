@@ -1,0 +1,733 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BirdTI - 小鸟性格测试</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'PingFang SC', 'Microsoft YaHei', sans-serif;
+            background: linear-gradient(135deg, #87CEEB 0%, #E0F7FA 50%, #B3E5FC 100%);
+            min-height: 100vh;
+            padding: 15px;
+        }
+        
+        .container {
+            max-width: 450px;
+            margin: 0 auto;
+        }
+        
+        /* 开始页面 */
+        .start-page {
+            text-align: center;
+            padding: 30px 20px;
+        }
+        
+        .start-page h1 {
+            font-size: 2.5rem;
+            color: #1E88E5;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+        }
+        
+        .start-page .subtitle {
+            color: #546E7A;
+            font-size: 1.1rem;
+            margin-bottom: 30px;
+        }
+        
+        .bird-icon {
+            font-size: 80px;
+            margin: 30px 0;
+            animation: bounce 2s infinite;
+        }
+        
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+        
+        .btn {
+            background: linear-gradient(135deg, #1E88E5 0%, #42A5F5 100%);
+            color: white;
+            border: none;
+            padding: 15px 40px;
+            font-size: 1.1rem;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(30, 136, 229, 0.4);
+        }
+        
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(30, 136, 229, 0.5);
+        }
+        
+        .btn:active {
+            transform: translateY(0);
+        }
+        
+        /* 进度条 */
+        .progress-bar {
+            width: 100%;
+            height: 8px;
+            background: rgba(255,255,255,0.5);
+            border-radius: 4px;
+            margin-bottom: 20px;
+            overflow: hidden;
+        }
+        
+        .progress {
+            height: 100%;
+            background: linear-gradient(90deg, #1E88E5, #42A5F5);
+            border-radius: 4px;
+            transition: width 0.5s ease;
+        }
+        
+        /* 问题页面 */
+        .question-page {
+            display: none;
+        }
+        
+        .question-box {
+            background: rgba(255,255,255,0.95);
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+        }
+        
+        .question-number {
+            color: #1E88E5;
+            font-size: 1rem;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+        
+        .question-text {
+            font-size: 1.3rem;
+            color: #37474F;
+            margin-bottom: 25px;
+            line-height: 1.6;
+        }
+        
+        .options {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+        
+        .option-btn {
+            background: linear-gradient(135deg, #E3F2FD 0%, #BBDEFB 100%);
+            border: 2px solid transparent;
+            padding: 15px 20px;
+            border-radius: 15px;
+            text-align: left;
+            font-size: 1rem;
+            color: #37474F;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .option-btn:hover {
+            border-color: #1E88E5;
+            background: rgba(30, 136, 229, 0.1);
+            transform: translateX(5px);
+        }
+        
+        .option-btn.selected {
+            border-color: #1E88E5;
+            background: rgba(30, 136, 229, 0.15);
+        }
+        
+        /* 结果页面 */
+        .result-page {
+            display: none;
+            text-align: center;
+        }
+        
+        .result-card {
+            background: rgba(255,255,255,0.95);
+            border-radius: 25px;
+            padding: 35px 25px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+        }
+        
+        .result-badge {
+            background: linear-gradient(135deg, #FFD54F 0%, #FFC107 100%);
+            color: #E65100;
+            padding: 8px 20px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            display: inline-block;
+            margin-bottom: 20px;
+        }
+        
+        .bird-image {
+            width: 85%;
+            max-width: 320px;
+            border-radius: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+            border: 4px solid #fff;
+            transition: transform 0.3s ease;
+        }
+        
+        .bird-image:hover {
+            transform: scale(1.05);
+        }
+        
+        .result-title {
+            font-size: 2rem;
+            color: #1E88E5;
+            margin-bottom: 10px;
+        }
+        
+        .result-keyword {
+            color: #546E7A;
+            font-size: 1rem;
+            margin-bottom: 20px;
+        }
+        
+        .result-description {
+            color: #455A64;
+            line-height: 1.7;
+            margin-bottom: 25px;
+            text-align: left;
+        }
+        
+        /* 科普信息 */
+        .info-section {
+            background: linear-gradient(135deg, #E8F5E9 0%, #C8E6C9 100%);
+            border-radius: 15px;
+            padding: 20px;
+            margin-bottom: 20px;
+            text-align: left;
+        }
+        
+        .info-section h3 {
+            color: #2E7D32;
+            margin-bottom: 10px;
+            font-size: 1.1rem;
+        }
+        
+        .info-section p {
+            color: #388E3C;
+            font-size: 0.9rem;
+            line-height: 1.6;
+            margin-bottom: 8px;
+        }
+        
+        .info-section p:last-child {
+            margin-bottom: 0;
+        }
+        
+        .mbti-type {
+            font-family: 'Courier New', monospace;
+            background: rgba(0,0,0,0.05);
+            padding: 3px 8px;
+            border-radius: 5px;
+        }
+        
+        /* 分享按钮 */
+        .share-btn {
+            background: linear-gradient(135deg, #4CAF50 0%, #66BB6A 100%);
+            margin-top: 15px;
+        }
+        
+        /* 响应式设计 */
+        @media (max-width: 480px) {
+            .start-page h1 {
+                font-size: 2rem;
+            }
+            
+            .question-box, .result-card {
+                padding: 20px;
+            }
+            
+            .bird-image {
+                width: 90%;
+                max-width: 280px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- 开始页面 -->
+        <div class="start-page" id="startPage">
+            <div class="bird-icon">🐦</div>
+            <h1>BirdTI</h1>
+            <p class="subtitle">发现你的小鸟人格</p>
+            <p style="color: #78909C; margin-bottom: 30px; line-height: 1.6;">
+                回答10道简单的情境题<br>
+                找出最符合你的小鸟类型
+            </p>
+            <button class="btn" onclick="startQuiz()">开始测试</button>
+        </div>
+        
+        <!-- 问题页面 -->
+        <div class="question-page" id="questionPage">
+            <div class="progress-bar">
+                <div class="progress" id="progress"></div>
+            </div>
+            <div class="question-box">
+                <div class="question-number" id="questionNumber"></div>
+                <div class="question-text" id="questionText"></div>
+                <div class="options" id="options"></div>
+            </div>
+        </div>
+        
+        <!-- 结果页面 -->
+        <div class="result-page" id="resultPage">
+            <div class="result-card">
+                <div class="result-badge">你的小鸟人格</div>
+                <img class="bird-image" id="birdImage" src="" alt="小鸟图片">
+                <h2 class="result-title" id="birdName"></h2>
+                <p class="result-keyword" id="birdKeyword"></p>
+                <p class="result-description" id="birdDescription"></p>
+                
+                <!-- 科普信息 -->
+                <div class="info-section" id="birdInfo"></div>
+                
+                <button class="btn" onclick="restartQuiz()">再测一次</button>
+                <button class="btn share-btn" onclick="shareResult()">分享结果</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // 问题数据
+        const questions = [
+            {
+                question: "周末你更喜欢做什么？",
+                options: [
+                    { text: "约朋友出去聚会聊天", type: "E" },
+                    { text: "在家看书或看电影", type: "I" },
+                    { text: "计划一次短途旅行", type: "E" },
+                    { text: "整理房间或做手账", type: "I" }
+                ]
+            },
+            {
+                question: "做重要决定时，你更倾向于？",
+                options: [
+                    { text: "凭直觉和感觉", type: "N" },
+                    { text: "分析事实和数据", type: "S" },
+                    { text: "询问他人意见", type: "F" },
+                    { text: "独立思考判断", type: "T" }
+                ]
+            },
+            {
+                question: "学习新知识时，你更喜欢？",
+                options: [
+                    { text: "了解整体框架和概念", type: "N" },
+                    { text: "掌握具体细节和实例", type: "S" },
+                    { text: "动手实践操作", type: "S" },
+                    { text: "深入思考理论", type: "N" }
+                ]
+            },
+            {
+                question: "团队合作中，你通常是？",
+                options: [
+                    { text: "活跃提出想法的人", type: "E" },
+                    { text: "默默支持的人", type: "I" },
+                    { text: "协调各方的人", type: "F" },
+                    { text: "理性分析的人", type: "T" }
+                ]
+            },
+            {
+                question: "面对压力时，你会？",
+                options: [
+                    { text: "找人倾诉", type: "F" },
+                    { text: "独自冷静思考", type: "T" },
+                    { text: "运动或听音乐放松", type: "P" },
+                    { text: "制定计划解决问题", type: "J" }
+                ]
+            },
+            {
+                question: "你更喜欢什么样的工作环境？",
+                options: [
+                    { text: "灵活自由", type: "P" },
+                    { text: "结构清晰", type: "J" },
+                    { text: "创意氛围", type: "N" },
+                    { text: "务实高效", type: "S" }
+                ]
+            },
+            {
+                question: "朋友遇到困难，你会？",
+                options: [
+                    { text: "给予情感支持", type: "F" },
+                    { text: "提供解决方案", type: "T" },
+                    { text: "陪在身边倾听", type: "F" },
+                    { text: "帮他分析问题", type: "T" }
+                ]
+            },
+            {
+                question: "你更看重？",
+                options: [
+                    { text: "创新和可能性", type: "N" },
+                    { text: "传统和稳定性", type: "S" },
+                    { text: "和谐与包容", type: "F" },
+                    { text: "公正与原则", type: "T" }
+                ]
+            },
+            {
+                question: "旅行时，你会？",
+                options: [
+                    { text: "详细规划行程", type: "J" },
+                    { text: "随遇而安", type: "P" },
+                    { text: "提前订好所有酒店", type: "J" },
+                    { text: "走到哪算哪", type: "P" }
+                ]
+            },
+            {
+                question: "收到任务后，你会？",
+                options: [
+                    { text: "尽快完成", type: "J" },
+                    { text: "等到截止日期前", type: "P" },
+                    { text: "先规划再执行", type: "J" },
+                    { text: "边做边调整", type: "P" }
+                ]
+            }
+        ];
+        
+        // 小鸟类型数据
+        const birdTypes = {
+            ESTJ: {
+                name: "啄木鸟",
+                icon: "🐦",
+                title: "勤劳的森林工匠",
+                keyword: "务实 | 负责 | 有条理",
+                description: "你就像一只勤劳的啄木鸟，脚踏实地，注重效率。你是可靠的执行者，善于组织和管理，总能把事情安排得井井有条。你重视传统和秩序，是团队中值得信赖的中坚力量。",
+                image: "https://neeko-copilot.bytedance.net/api/text2image?prompt=super%20cute%20chibi%20woodpecker%20bird%20cartoon%20kawaii%20style%20big%20round%20eyes%20adorable%20soft%20pastel%20background%20illustration",
+                info: {
+                    appearance: "啄木鸟有着强壮的喙和灵活的舌头，羽毛多为黑白相间，体型中等。它们的尾巴坚硬，可以支撑身体在树干上攀爬。",
+                    habit: "啄木鸟以昆虫为食，善于用喙敲击树干寻找食物。它们是森林的益鸟，能够帮助树木清除害虫。",
+                    habitat: "啄木鸟主要栖息在森林、公园和果园中，分布广泛，几乎遍布全球各地的森林生态系统。"
+                }
+            },
+            ESFJ: {
+                name: "麻雀",
+                icon: "🐦",
+                title: "温暖的社群小鸟",
+                keyword: "热情 | 友善 | 体贴",
+                description: "你就像一只活泼的麻雀，温暖友善，善于交际。你总是关心他人，乐于帮助朋友，是朋友圈中的开心果。你重视人际关系，能营造和谐的氛围，让身边的人感到温暖。",
+                image: "https://neeko-copilot.bytedance.net/api/text2image?prompt=super%20cute%20chibi%20sparrow%20bird%20cartoon%20kawaii%20style%20big%20round%20eyes%20adorable%20soft%20pastel%20background%20illustration",
+                info: {
+                    appearance: "麻雀体型小巧，羽毛呈棕灰色，头部和颈部颜色较深，胸部有斑点。它们的喙短而结实，适合啄食种子。",
+                    habit: "麻雀是群居鸟类，喜欢在人类居住区附近活动，善于适应各种环境。它们以种子、昆虫等为食。",
+                    habitat: "麻雀分布广泛，几乎遍布全球各地，常见于城市、乡村、农田等各种环境中。"
+                }
+            },
+            ISTJ: {
+                name: "珠颈斑鸠",
+                icon: "🕊️",
+                title: "沉稳的观察者",
+                keyword: "稳重 | 细致 | 可靠",
+                description: "你就像一只优雅的珠颈斑鸠，沉稳内敛，注重细节。你做事踏实认真，是值得信赖的朋友。虽然不善于表达，但内心丰富，总是默默关注着身边的人和事。",
+                image: "https://neeko-copilot.bytedance.net/api/text2image?prompt=super%20cute%20chibi%20spotted%20dove%20bird%20cartoon%20kawaii%20style%20big%20round%20eyes%20adorable%20soft%20pastel%20background%20illustration",
+                info: {
+                    appearance: "珠颈斑鸠体型中等，羽毛呈灰褐色，颈部有黑白相间的珍珠状斑点，非常美丽。",
+                    habit: "珠颈斑鸠性情温和，喜欢在地面觅食，以种子和昆虫为食。它们的叫声低沉而有节奏。",
+                    habitat: "珠颈斑鸠主要栖息在平原、草地、农田和城市公园中，是常见的留鸟。"
+                }
+            },
+            ISFJ: {
+                name: "鸽子",
+                icon: "🕊️",
+                title: "温柔的和平使者",
+                keyword: "善良 | 忠诚 | 体贴",
+                description: "你就像一只温柔的鸽子，善良体贴，充满爱心。你总是默默关心他人，乐于奉献，是朋友和家人最可靠的依靠。你的温暖和包容让周围的人感到安心。",
+                image: "https://neeko-copilot.bytedance.net/api/text2image?prompt=super%20cute%20chibi%20pigeon%20bird%20cartoon%20kawaii%20style%20big%20round%20eyes%20adorable%20soft%20pastel%20background%20illustration",
+                info: {
+                    appearance: "鸽子体型中等，羽毛多为灰白色，翅膀上有黑色条纹。它们的眼睛明亮，表情温和。",
+                    habit: "鸽子是群居鸟类，以谷物、种子为食。它们记忆力强，能够找到回家的路。",
+                    habitat: "鸽子适应能力强，常见于城市、乡村和沿海地区，也是人类最早驯化的鸟类之一。"
+                }
+            },
+            ENTJ: {
+                name: "老鹰",
+                icon: "🦅",
+                title: "高远的领导者",
+                keyword: "果断 | 远见 | 自信",
+                description: "你就像一只翱翔的雄鹰，目光远大，充满自信。你是天生的领导者，善于制定计划并推动执行。你勇于挑战，追求卓越，总能带领团队走向成功。",
+                image: "https://neeko-copilot.bytedance.net/api/text2image?prompt=super%20cute%20chibi%20eagle%20bird%20cartoon%20kawaii%20style%20big%20round%20eyes%20adorable%20soft%20pastel%20background%20illustration",
+                info: {
+                    appearance: "老鹰体型较大，翅膀宽阔有力，喙尖锐弯曲，目光锐利。羽毛多为棕褐色。",
+                    habit: "老鹰是肉食性猛禽，善于在空中盘旋寻找猎物，然后俯冲捕食。它们是食物链顶端的捕食者。",
+                    habitat: "老鹰主要栖息在高山、草原和森林地区，分布广泛，但数量相对较少。"
+                }
+            },
+            ENFJ: {
+                name: "黄鹂",
+                icon: "🐦",
+                title: "优雅的百灵鸟",
+                keyword: "热情 | 魅力 | 感召力",
+                description: "你就像一只美丽的黄鹂，优雅大方，充满魅力。你善于与人沟通，能够感染和激励他人。你关心社会公益，乐于帮助他人成长，是天生的教育家和领导者。",
+                image: "https://neeko-copilot.bytedance.net/api/text2image?prompt=super%20cute%20chibi%20oriole%20bird%20cartoon%20kawaii%20style%20big%20round%20eyes%20adorable%20soft%20pastel%20background%20illustration",
+                info: {
+                    appearance: "黄鹂羽毛鲜艳，雄鸟多为金黄色，翅膀和尾部有黑色斑纹，非常美丽。",
+                    habit: "黄鹂以昆虫和果实为食，叫声清脆悦耳，是著名的鸣鸟。它们喜欢在树冠层活动。",
+                    habitat: "黄鹂主要栖息在森林、公园和果园中，在我国分布广泛，是夏季常见的候鸟。"
+                }
+            },
+            INTJ: {
+                name: "猫头鹰",
+                icon: "🦉",
+                title: "睿智的思考者",
+                keyword: "智慧 | 独立 | 深刻",
+                description: "你就像一只睿智的猫头鹰，善于思考，见解深刻。你喜欢独立思考，追求知识和真理。虽然外表高冷，但内心丰富，是思想的先驱者。",
+                image: "https://neeko-copilot.bytedance.net/api/text2image?prompt=super%20cute%20chibi%20owl%20bird%20cartoon%20kawaii%20style%20big%20round%20eyes%20adorable%20soft%20pastel%20background%20illustration",
+                info: {
+                    appearance: "猫头鹰头部较大，眼睛大而圆，羽毛柔软，飞行时几乎无声。它们的面部呈心形或圆形。",
+                    habit: "猫头鹰是夜行性猛禽，以鼠类和昆虫为食，听觉和视觉非常敏锐。",
+                    habitat: "猫头鹰栖息在森林、草原和城市边缘，分布广泛，是重要的益鸟。"
+                }
+            },
+            INFJ: {
+                name: "白头鹎",
+                icon: "🐦",
+                title: "温和的灵魂导师",
+                keyword: "深刻 | 直觉 | 共情",
+                description: "你就像一只优雅的白头鹎，内心丰富，充满智慧。你善于理解他人，富有同理心，是朋友倾诉的好对象。你追求心灵的成长，能够给他人带来启发和安慰。",
+                image: "https://neeko-copilot.bytedance.net/api/text2image?prompt=super%20cute%20chibi%20light%20vented%20bulbul%20bird%20cartoon%20kawaii%20style%20big%20round%20eyes%20adorable%20soft%20pastel%20background%20illustration",
+                info: {
+                    appearance: "白头鹎头部白色，身体呈灰褐色，腹部白色，体型中等。它们的叫声清脆多变。",
+                    habit: "白头鹎以果实、种子和昆虫为食，喜欢在树冠层活动，是常见的鸣鸟。",
+                    habitat: "白头鹎主要栖息在森林、公园和居民区附近，是我国南方常见的留鸟。"
+                }
+            },
+            ESTP: {
+                name: "喜鹊",
+                icon: "🐦",
+                title: "活泼的社交达人",
+                keyword: "活力 | 灵活 | 务实",
+                description: "你就像一只活泼的喜鹊，充满活力，善于社交。你喜欢尝试新事物，勇于冒险，是朋友圈中的开心果。你反应敏捷，能够快速适应各种环境。",
+                image: "https://neeko-copilot.bytedance.net/api/text2image?prompt=super%20cute%20chibi%20magpie%20bird%20cartoon%20kawaii%20style%20big%20round%20eyes%20adorable%20soft%20pastel%20background%20illustration",
+                info: {
+                    appearance: "喜鹊羽毛黑白相间，尾巴长而优美，体型中等。它们的叫声响亮而多变。",
+                    habit: "喜鹊是杂食性鸟类，以昆虫、果实、种子等为食。它们聪明活泼，善于适应环境。",
+                    habitat: "喜鹊分布广泛，常见于森林、农田、城市公园等各种环境中。"
+                }
+            },
+            ESFP: {
+                name: "太阳鸟",
+                icon: "🐦",
+                title: "热情的乐天派",
+                keyword: "热情 | 乐观 | 活泼",
+                description: "你就像一只绚丽的太阳鸟，热情洋溢，充满活力。你热爱生活，善于发现美好，是身边人的快乐源泉。你喜欢与人交往，享受当下的每一刻。",
+                image: "https://neeko-copilot.bytedance.net/api/text2image?prompt=super%20cute%20chibi%20sunbird%20bird%20cartoon%20kawaii%20style%20big%20round%20eyes%20adorable%20soft%20pastel%20background%20illustration",
+                info: {
+                    appearance: "太阳鸟体型小巧，羽毛色彩鲜艳，雄鸟多为红色或橙色，非常美丽。",
+                    habit: "太阳鸟以花蜜为食，喜欢在花丛中穿梭，是重要的授粉者。",
+                    habitat: "太阳鸟主要分布在热带和亚热带地区，常见于森林、花园和果园中。"
+                }
+            },
+            ISTP: {
+                name: "翠鸟",
+                icon: "🐦",
+                title: "冷静的行动者",
+                keyword: "冷静 | 务实 | 灵巧",
+                description: "你就像一只敏捷的翠鸟，冷静务实，善于动手。你喜欢探索和实践，能够快速解决问题。虽然话不多，但行动力强，是可靠的伙伴。",
+                image: "https://neeko-copilot.bytedance.net/api/text2image?prompt=super%20cute%20chibi%20kingfisher%20bird%20cartoon%20kawaii%20style%20big%20round%20eyes%20adorable%20soft%20pastel%20background%20illustration",
+                info: {
+                    appearance: "翠鸟羽毛色彩鲜艳，多为蓝绿色，喙长而尖锐，体型小巧。",
+                    habit: "翠鸟善于捕鱼，喜欢栖息在水边，能够快速俯冲捕食水中的鱼类。",
+                    habitat: "翠鸟主要栖息在河流、湖泊、池塘等水域附近，分布广泛。"
+                }
+            },
+            ISFP: {
+                name: "画眉",
+                icon: "🐦",
+                title: "细腻的艺术家",
+                keyword: "温柔 | 敏感 | 艺术",
+                description: "你就像一只婉转的画眉，温柔细腻，富有艺术气息。你善于感受美，热爱生活中的小确幸。虽然低调，但内心丰富，有着独特的审美和创造力。",
+                image: "https://neeko-copilot.bytedance.net/api/text2image?prompt=super%20cute%20chibi%20thrush%20bird%20cartoon%20kawaii%20style%20big%20round%20eyes%20adorable%20soft%20pastel%20background%20illustration",
+                info: {
+                    appearance: "画眉体型中等，羽毛呈棕褐色，眼部有白色眉纹，非常优雅。",
+                    habit: "画眉以昆虫和果实为食，叫声婉转悦耳，是著名的鸣鸟。",
+                    habitat: "画眉主要栖息在森林和灌木丛中，是我国常见的笼养鸟类之一。"
+                }
+            },
+            ENTP: {
+                name: "乌鸦",
+                icon: "🐦",
+                title: "机智的创新者",
+                keyword: "好奇 | 机智 | 创新",
+                description: "你就像一只聪明的乌鸦，充满好奇心，善于创新。你喜欢挑战传统，提出独特的想法。你思维敏捷，善于辩论，是团队中的智多星。",
+                image: "https://neeko-copilot.bytedance.net/api/text2image?prompt=super%20cute%20chibi%20crow%20bird%20cartoon%20kawaii%20style%20big%20round%20eyes%20adorable%20soft%20pastel%20background%20illustration",
+                info: {
+                    appearance: "乌鸦全身黑色，体型较大，喙粗壮有力。它们的眼睛明亮，显得非常聪明。",
+                    habit: "乌鸦是杂食性鸟类，食性广泛。它们非常聪明，能够使用工具获取食物。",
+                    habitat: "乌鸦分布广泛，常见于森林、城市和农田等各种环境中。"
+                }
+            },
+            ENFP: {
+                name: "鹦鹉",
+                icon: "🦜",
+                title: "多彩的梦想家",
+                keyword: "热情 | 创意 | 好奇",
+                description: "你就像一只绚丽的鹦鹉，充满热情和创意。你热爱生活，富有想象力，总是充满各种新奇的想法。你善于与人交流，能够给身边的人带来欢乐和灵感。",
+                image: "https://neeko-copilot.bytedance.net/api/text2image?prompt=super%20cute%20chibi%20parrot%20bird%20cartoon%20kawaii%20style%20big%20round%20eyes%20adorable%20soft%20pastel%20background%20illustration",
+                info: {
+                    appearance: "鹦鹉羽毛色彩鲜艳，体型大小不一，喙弯曲有力。它们的舌头灵活，善于模仿声音。",
+                    habit: "鹦鹉以果实、种子和花蜜为食，善于模仿人类语言和其他声音。",
+                    habitat: "鹦鹉主要分布在热带和亚热带地区，常见于森林和热带雨林中。"
+                }
+            },
+            INTP: {
+                name: "布谷鸟",
+                icon: "🐦",
+                title: "深沉的思考者",
+                keyword: "理性 | 好奇 | 分析",
+                description: "你就像一只神秘的布谷鸟，善于思考，充满智慧。你热爱知识，喜欢探索事物的本质。虽然低调，但思维深刻，是真正的思想者。",
+                image: "https://neeko-copilot.bytedance.net/api/text2image?prompt=super%20cute%20chibi%20cuckoo%20bird%20cartoon%20kawaii%20style%20big%20round%20eyes%20adorable%20soft%20pastel%20background%20illustration",
+                info: {
+                    appearance: "布谷鸟体型中等，羽毛多为灰褐色，腹部有横斑。它们的叫声独特，易于辨认。",
+                    habit: "布谷鸟是巢寄生鸟类，将蛋产在其他鸟类的巢中。它们以昆虫为食。",
+                    habitat: "布谷鸟主要栖息在森林和农田中，是夏季常见的候鸟。"
+                }
+            },
+            INFP: {
+                name: "夜莺",
+                icon: "🐦",
+                title: "诗意的梦想家",
+                keyword: "理想 | 善良 | 细腻",
+                description: "你就像一只神秘的夜莺，内心丰富，充满诗意。你追求美好，富有同情心，是理想主义者。虽然外表温柔，但内心坚定，有着自己的信念和追求。",
+                image: "https://neeko-copilot.bytedance.net/api/text2image?prompt=super%20cute%20chibi%20nightingale%20bird%20cartoon%20kawaii%20style%20big%20round%20eyes%20adorable%20soft%20pastel%20background%20illustration",
+                info: {
+                    appearance: "夜莺体型较小，羽毛呈棕褐色，腹部颜色较浅。它们的外表普通，但歌声非常优美。",
+                    habit: "夜莺是夜行性鸣鸟，以昆虫为食，夜间歌唱，叫声婉转动听。",
+                    habitat: "夜莺主要栖息在森林和灌木丛中，是著名的鸣鸟。"
+                }
+            }
+        };
+        
+        let currentQuestion = 0;
+        let answers = [];
+        
+        function startQuiz() {
+            document.getElementById('startPage').style.display = 'none';
+            document.getElementById('questionPage').style.display = 'block';
+            showQuestion();
+        }
+        
+        function showQuestion() {
+            const question = questions[currentQuestion];
+            document.getElementById('questionNumber').textContent = `问题 ${currentQuestion + 1} / ${questions.length}`;
+            document.getElementById('questionText').textContent = question.question;
+            
+            const optionsContainer = document.getElementById('options');
+            optionsContainer.innerHTML = '';
+            
+            question.options.forEach((option, index) => {
+                const button = document.createElement('button');
+                button.className = 'option-btn';
+                button.textContent = String.fromCharCode(65 + index) + '. ' + option.text;
+                button.onclick = () => selectOption(option.type);
+                optionsContainer.appendChild(button);
+            });
+            
+            updateProgress();
+        }
+        
+        function selectOption(type) {
+            answers.push(type);
+            
+            // 清除所有选中状态
+            document.querySelectorAll('.option-btn').forEach(btn => btn.classList.remove('selected'));
+            
+            // 添加选中状态
+            event.target.classList.add('selected');
+            
+            setTimeout(() => {
+                currentQuestion++;
+                if (currentQuestion < questions.length) {
+                    showQuestion();
+                } else {
+                    showResult();
+                }
+            }, 500);
+        }
+        
+        function updateProgress() {
+            const progress = ((currentQuestion + 1) / questions.length) * 100;
+            document.getElementById('progress').style.width = progress + '%';
+        }
+        
+        function calculateMBTI() {
+            const counts = { E: 0, I: 0, S: 0, N: 0, T: 0, F: 0, J: 0, P: 0 };
+            
+            answers.forEach(type => {
+                counts[type]++;
+            });
+            
+            const EorI = counts.E >= counts.I ? 'E' : 'I';
+            const SorN = counts.S >= counts.N ? 'S' : 'N';
+            const TorF = counts.T >= counts.F ? 'T' : 'F';
+            const JorP = counts.J >= counts.P ? 'J' : 'P';
+            
+            return EorI + SorN + TorF + JorP;
+        }
+        
+        function showResult() {
+            const mbti = calculateMBTI();
+            const bird = birdTypes[mbti] || birdTypes.INFJ;
+            
+            document.getElementById('questionPage').style.display = 'none';
+            document.getElementById('resultPage').style.display = 'block';
+            
+            document.getElementById('birdImage').src = bird.image;
+            document.getElementById('birdName').textContent = bird.name;
+            document.getElementById('birdKeyword').textContent = bird.keyword;
+            document.getElementById('birdDescription').textContent = bird.description;
+            
+            // 显示科普信息
+            const infoSection = document.getElementById('birdInfo');
+            infoSection.innerHTML = `
+                <h3>🐦 小鸟科普</h3>
+                <p><strong>外貌特征：</strong>${bird.info.appearance}</p>
+                <p><strong>生活习性：</strong>${bird.info.habit}</p>
+                <p><strong>栖息地：</strong>${bird.info.habitat}</p>
+            `;
+            
+            // 保存结果到本地存储，方便分享
+            localStorage.setItem('birdtiResult', JSON.stringify({ mbti, bird }));
+        }
+        
+        function restartQuiz() {
+            currentQuestion = 0;
+            answers = [];
+            document.getElementById('resultPage').style.display = 'none';
+            document.getElementById('startPage').style.display = 'block';
+        }
+        
+        function shareResult() {
+            const result = localStorage.getItem('birdtiResult');
+            if (result) {
+                const { bird } = JSON.parse(result);
+                const text = `我在BirdTI小鸟性格测试中测出了${bird.name}！${bird.title}，关键词：${bird.keyword}来测测你的小鸟人格吧！`;
+                
+                if (navigator.share) {
+                    navigator.share({
+                        title: 'BirdTI小鸟性格测试',
+                        text: text,
+                        url: window.location.href
+                    });
+                } else {
+                    // 复制到剪贴板
+                    navigator.clipboard.writeText(text + '\n' + window.location.href);
+                    alert('结果已复制到剪贴板，快去分享吧！');
+                }
+            }
+        }
+    </script>
+</body>
+</html>
